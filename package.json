@@ -1,6 +1,6 @@
 {
   "name": "angular2-form-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "build": "rm -rf dist && tsc",
     "lint": "tslint src/**/*.ts",
@@ -32,8 +32,7 @@
   },
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@angular/common": "2.0.0-rc.4",
     "@angular/compiler": "2.0.0-rc.4",
@@ -43,7 +42,7 @@
     "rxjs": "5.0.0-beta.6",
     "tslint": "^3.6.0",
     "typescript": "^1.8.10",
-    "typings":"^1.0.4",
+    "typings": "^1.0.4",
     "zone.js": "0.6.12"
   },
   "engines": {
