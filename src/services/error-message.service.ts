@@ -9,6 +9,8 @@ export class ErrorMessageService {
         maxlength: 'must be no more than {{requiredLength}} characters long'
     };
 
+    private fieldsNames: { [s: string]: string; };
+
     constructor() { }
 
     /**
@@ -17,6 +19,14 @@ export class ErrorMessageService {
       */
     setErrorMessages(errorMessages: { [s: string]: string; }) {
         this.errorMessages = Object.assign(this.errorMessages, errorMessages);
+    }
+
+    /**
+      * Set custom fields names
+      * @param errorMessages An object {key: name}
+      */
+    setFieldsNames(fieldsNames: { [s: string]: string; }) {
+        this.fieldsNames = fieldsNames;
     }
 
     getErrorMessage(error: string, params: any): string {
@@ -30,6 +40,9 @@ export class ErrorMessageService {
     }
 
     getFieldName(field: string): string {
+        if (this.fieldsNames && this.fieldsNames[field]) {
+            return this.fieldsNames[field];
+        }
         return field.toLowerCase()
             .split('_')
             .map(i => i[0].toUpperCase() + i.substring(1))
