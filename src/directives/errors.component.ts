@@ -43,7 +43,7 @@ export class ErrorsComponent implements OnInit {
   addErrors(fieldName: string, errors: any){
     for (let error of Object.keys(errors)){
       this.errors.push({
-        field: fieldName,
+        field: this.getFieldName(fieldName),
         message: this.getErrorMessage(error, errors[error])
       });
     }
@@ -57,6 +57,13 @@ export class ErrorsComponent implements OnInit {
       }
     }
     return errorMessage;
+  }
+
+  getFieldName(field: string){
+    return field.toLowerCase()
+        .split('_')
+        .map(i => i[0].toUpperCase() + i.substring(1))
+        .join(' ');
   }
 
 }
