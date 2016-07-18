@@ -1,10 +1,16 @@
 # Angular 2 Form Utils
 
+Some useful components and services that will help you while managing and validating Angular 2 Forms.
+
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide) [![Dependency Status](https://david-dm.org/ghidoz/angular2-form-utils.svg)](https://david-dm.org/ghidoz/angular2-form-utils) [![devDependency Status](https://david-dm.org/ghidoz/angular2-form-utils/dev-status.svg)](https://david-dm.org/ghidoz/angular2-form-utils#info=devDependencies)
 
-This library contains some useful components and service, that will help you while managing and validating Angular 2 Forms:
-
- - [Form errors list](#form-errors-list)
+#### Table of Contents
+- [Getting started](#getting-started)
+    - [Installation](#installation)
+    - [Form errors list](#form-errors-list)
+        - [How to use](#how-to-use)
+- [Development](#development)
+- [License](#licence)
 
 ## Getting started
 
@@ -15,12 +21,45 @@ To install this library, run:
 $ npm install angular2-form-utils --save
 ```
 
+If you use [Angular-CLI](https://github.com/angular/angular-cli), add the package to `system-config.ts`:
+```typescript
+const map: any = {
+  'angular2-form-utils': 'vendor/angular2-form-utils/dist'
+};
+
+const packages: any = {
+  'angular2-form-utils': {defaultExtension: 'js', main: 'index.js'}
+};
+```
+
+and to `angular-cli-build.js`:
+```javascript
+vendorNpmFiles: [
+    ...
+    'angular2-form-utils/dist/**/*.+(ts|js|js.map)'
+]
+```
+
+Add the library's `DIRECTIVES` to your application component:
+```typescript
+import { Component } from '@angular/core';
+import { DIRECTIVES } from 'angular2-form-utils';
+
+@Component({
+  selector: 'app'
+  directives: [DIRECTIVES]
+})
+export class AppComponent{
+  // ...
+}
+```
+
 ### Form Errors List
 
 Show a list of error messages under your form, like:
 
-> **Username**: is required
-> **Password**: must be at least 8 characters long
+> - **Username**: is required
+> - **Password**: must be at least 8 characters long
 
 #### How to use
  
