@@ -55,4 +55,4 @@ $ npm run lint
 
 ## License
 
-MIT © [Daniele Ghidoli](daniele.ghidoli@bigthink.it)
+MIT © [Daniele Ghidoli](http://danieleghidoli.it)

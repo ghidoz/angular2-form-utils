@@ -17,11 +17,14 @@
   },
   "author": {
     "name": "Daniele Ghidoli",
-    "email": "daniele.ghidoli@bigthink.it"
+    "url": "http://danieleghidoli.it"
   },
   "keywords": [
     "angular",
-    "angular2"
+    "angular2",
+    "forms",
+    "validation",
+    "errors"
   ],
   "license": "MIT",
   "bugs": {
@@ -36,7 +39,7 @@
     "@angular/compiler": "2.0.0-rc.4",
     "@angular/core": "2.0.0-rc.4",
     "@angular/forms": "0.2.0",
-    "codelyzer": "^0.0.20",
+    "codelyzer": "^0.0.25",
     "rxjs": "5.0.0-beta.6",
     "tslint": "^3.6.0",
     "typescript": "^1.8.10",
