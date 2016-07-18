@@ -40,14 +40,15 @@ vendorNpmFiles: [
 ]
 ```
 
-Add the library's `DIRECTIVES` to your application component:
+Add the library's `DIRECTIVES` and `SERVICES` to your application component:
 ```typescript
 import { Component } from '@angular/core';
-import { DIRECTIVES } from 'angular2-form-utils';
+import { DIRECTIVES, SERVICES } from 'angular2-form-utils';
 
 @Component({
   selector: 'app'
-  directives: [DIRECTIVES]
+  directives: [DIRECTIVES],
+  providers: [SERVICES]
 })
 export class AppComponent{
   // ...
@@ -77,6 +78,17 @@ Add the `<errors>`component inside your form, passing the variable:
 <errors [form]="form"></errors>
 ```
 
+If you want to customize the error messages or add new ones, use the `ErrorMessageService`:
+```typescript
+import { ErrorMessageService } from 'angular2-form-utils';
+...
+...
+constructor(errorMessageService: ErrorMessageService) {
+    errorMessageService.setErrorMessages({
+        required: 'please, fill this!'
+    });
+}
+```
 
 ## Development
 
