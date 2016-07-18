@@ -1,0 +1,49 @@
+{
+  "name": "angular2-form-utils",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "lint": "tslint src/**/*.ts",
+    "pretest": "npm run build",
+    "test": "karma start",
+    "postinstall": "typings install",
+    "prepublish": "tsc",
+    "tsc": "tsc",
+    "typings": "typings"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghidoz/angular2-form-utils"
+  },
+  "author": {
+    "name": "Daniele Ghidoli",
+    "email": "daniele.ghidoli@bigthink.it"
+  },
+  "keywords": [
+    "angular",
+    "angular2"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ghidoz/angular2-form-utils/issues"
+  },
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/forms": "0.2.0",
+    "codelyzer": "^0.0.20",
+    "rxjs": "5.0.0-beta.6",
+    "tslint": "^3.6.0",
+    "typescript": "^1.8.10",
+    "typings":"^1.0.4",
+    "zone.js": "0.6.12"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
