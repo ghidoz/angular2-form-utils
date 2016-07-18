@@ -63,10 +63,10 @@ Show a list of error messages under your form, like:
 
 #### How to use
  
-Add a template reference variable to your ngForm:
+Add a **template reference variable** to your form, binding it to `ngForm`:
 
 ```html
-<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" #f="ngForm">
+<form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
 ...
 </form>
 ```
@@ -74,7 +74,7 @@ Add a template reference variable to your ngForm:
 Add the `<errors>`component inside your form, passing the variable:
 
 ```html
-<errors [form]="f"></errors>
+<errors [form]="form"></errors>
 ```
 
 
