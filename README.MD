@@ -90,6 +90,20 @@ constructor(errorMessageService: ErrorMessageService) {
 }
 ```
 
+Fields names in the errors list are based on input names or FormControl names and humanized (`first_name` becames `First Name`) , but if you want to customize them, you can set a map object:
+
+```typescript
+import { ErrorMessageService } from 'angular2-form-utils';
+...
+...
+constructor(errorMessageService: ErrorMessageService) {
+    errorMessageService.setFieldsNames({
+      first_name: 'Name',
+      last_name: 'Surname'
+    });
+}
+```
+
 ## Development
 
 To generate all `*.js`, `*.js.map` and `*.d.ts` files:
