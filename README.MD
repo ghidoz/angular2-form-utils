@@ -2,9 +2,9 @@
 
 Some useful components and services that will help you while managing and validating Angular 2 Forms.
 
-[![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide) [![Dependency Status](https://david-dm.org/ghidoz/angular2-form-utils.svg)](https://david-dm.org/ghidoz/angular2-form-utils) [![devDependency Status](https://david-dm.org/ghidoz/angular2-form-utils/dev-status.svg)](https://david-dm.org/ghidoz/angular2-form-utils#info=devDependencies)
+[![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide) [![Dependency Status](https://david-dm.org/ghidoz/angular2-form-utils.svg)](https://david-dm.org/ghidoz/angular2-form-utils) [![devDependency Status](https://david-dm.org/ghidoz/angular2-form-utils/dev-status.svg)](https://david-dm.org/ghidoz/angular2-form-utils#info=devDependencies) [![npm version](https://badge.fury.io/js/angular2-form-utils.svg)](https://badge.fury.io/js/angular2-form-utils)
 
-#### Table of Contents
+## Table of Contents
 - [Getting started](#getting-started)
     - [Installation](#installation)
     - [Form errors list](#form-errors-list)
@@ -40,17 +40,17 @@ vendorNpmFiles: [
 ]
 ```
 
-Add the library's `DIRECTIVES` and `SERVICES` to your application component:
+Add the library's `DIRECTIVES` and `SERVICES` to the component with the form:
 ```typescript
 import { Component } from '@angular/core';
 import { DIRECTIVES, SERVICES } from 'angular2-form-utils';
 
 @Component({
-  selector: 'app'
+  selector: 'my-form'
   directives: [DIRECTIVES],
   providers: [SERVICES]
 })
-export class AppComponent{
+export class MyFormComponent{
   // ...
 }
 ```
@@ -90,7 +90,7 @@ constructor(errorMessageService: ErrorMessageService) {
 }
 ```
 
-Fields names in the errors list are based on input names or FormControl names and humanized (`first_name` becames `First Name`) , but if you want to customize them, you can set a map object:
+Fields names in the errors list are based on input names or FormControl names and humanized (`first_name` becames `First Name`), but if you want to customize them, you can set a map object:
 
 ```typescript
 import { ErrorMessageService } from 'angular2-form-utils';
