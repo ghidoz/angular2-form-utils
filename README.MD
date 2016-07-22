@@ -110,7 +110,7 @@ Some built in useful validators that you can apply to your forms:
 
 #### How to use
 
-Import and use them as classical Validators:
+Import and use them as classical Validators. Using the `FormBuilder`:
 
 ```typescript
 import { CustomValidators } from 'angular2-form-utils';
@@ -120,6 +120,12 @@ constructor(fb: FormBuilder) {
       email: ['', [Validators.required, CustomValidators.email]]
     });
 }
+```
+
+or directly in template-driven forms:
+
+```html
+<input type="email" name="Email" ngModel validateEmail required />
 ```
 
 ## Development
