@@ -10,6 +10,7 @@ Some useful components and services that will help you while managing and valida
     - [Form errors list](#form-errors-list)
     - [Error Messages](#error-messages)
     - [Custom Validators](#custom-validators)
+- [TODO](#todo)
 - [Development](#development)
 - [License](#licence)
 
@@ -148,12 +149,16 @@ or directly in template-driven forms:
 <input type="number" name="age" ngModel min="18" max="42" required />
 ```
 
+## TODO
+- Add unit testing and E2E testing
+- Add more Custom Validators
+
 ## Development
 
 To generate all `*.js`, `*.js.map` and `*.d.ts` files:
 
 ```bash
-$ npm run tsc
+$ npm run build
 ```
 
 To lint all `*.ts` files:
