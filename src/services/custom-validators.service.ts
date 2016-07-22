@@ -15,4 +15,24 @@ export class CustomValidators {
         return pattern.test(control.value) ? null : {'email': true};
     }
 
+    static min(min: number): Function {
+        return (control: AbstractControl): { [key: string]: any } => {
+            if (isPresent(Validators.required(control))) {
+                return null;
+            }
+            let v: number = Number(control.value);
+            return v < min ? {'min': {'requiredMin': min, 'actualMin': v}} : null;
+        };
+    }
+
+    static max(max: number): Function {
+        return (control: AbstractControl): { [key: string]: any } => {
+            if (isPresent(Validators.required(control))) {
+                return null;
+            }
+            let v: number = Number(control.value);
+            return v > max ? {'max': {'requiredMax': max, 'actualMax': v}} : null;
+        };
+    }
+
 };

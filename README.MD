@@ -107,6 +107,8 @@ constructor(errorMessageService: ErrorMessageService) {
 Some built in useful validators that you can apply to your forms:
 
  - `CustomValidators.email`: check if it's a valid email
+ - `CustomValidators.min`check if it's a number greater than `min`
+ - `CustomValidators.max` check if it's a number less than `max` 
 
 #### How to use
 
@@ -117,7 +119,8 @@ import { CustomValidators } from 'angular2-form-utils';
 // ...
 constructor(fb: FormBuilder) {
     this.myForm = fb.group({
-      email: ['', [Validators.required, CustomValidators.email]]
+      email: ['', [Validators.required, CustomValidators.email]],
+      age: ['', [Validators.required, CustomValidators.min(18), CustomValidators.max(42)]]
     });
 }
 ```
@@ -125,7 +128,8 @@ constructor(fb: FormBuilder) {
 or directly in template-driven forms:
 
 ```html
-<input type="email" name="Email" ngModel validateEmail required />
+<input type="email" name="email" ngModel validateEmail required />
+<input type="number" name="age" ngModel min="18" max="42" required />
 ```
 
 ## Development

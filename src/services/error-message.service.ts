@@ -7,7 +7,9 @@ export class ErrorMessageService {
         required: 'is required',
         minlength: 'must be at least {{requiredLength}} characters long',
         maxlength: 'must be no more than {{requiredLength}} characters long',
-        email: 'must be valid'
+        email: 'must be valid',
+        min: 'must be a number greater than or equal to {{requiredMin}}',
+        max: 'must be a number less than or equal to {{requiredMax}}'
     };
 
     private fieldsNames: { [key: string]: string };
