@@ -8,7 +8,7 @@ Some useful components and services that will help you while managing and valida
 - [Getting started](#getting-started)
     - [Installation](#installation)
     - [Form errors list](#form-errors-list)
-        - [How to use](#how-to-use)
+    - [Custom Validators](#custom-validators)
 - [Development](#development)
 - [License](#licence)
 
@@ -35,7 +35,7 @@ const packages: any = {
 and to `angular-cli-build.js`:
 ```javascript
 vendorNpmFiles: [
-    ...
+    // ...
     'angular2-form-utils/dist/**/*.+(ts|js|js.map)'
 ]
 ```
@@ -81,8 +81,7 @@ Add the `<errors>`component inside your form, passing the variable:
 If you want to customize the error messages or add new ones, use the `ErrorMessageService`:
 ```typescript
 import { ErrorMessageService } from 'angular2-form-utils';
-...
-...
+// ...
 constructor(errorMessageService: ErrorMessageService) {
     errorMessageService.setErrorMessages({
         required: 'please, fill this!'
@@ -94,12 +93,31 @@ Fields names in the errors list are based on input names or FormControl names an
 
 ```typescript
 import { ErrorMessageService } from 'angular2-form-utils';
-...
-...
+// ...
 constructor(errorMessageService: ErrorMessageService) {
     errorMessageService.setFieldsNames({
       first_name: 'Name',
       last_name: 'Surname'
+    });
+}
+```
+
+### Custom Validators
+
+Some built in useful validators that you can apply to your forms:
+
+ - `CustomValidators.email`: check if it's a valid email
+
+#### How to use
+
+Import and use them as classical Validators:
+
+```typescript
+import { CustomValidators } from 'angular2-form-utils';
+// ...
+constructor(fb: FormBuilder) {
+    this.myForm = fb.group({
+      email: ['', [Validators.required, CustomValidators.email]]
     });
 }
 ```
