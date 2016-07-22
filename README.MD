@@ -5,17 +5,16 @@ Some useful components and services that will help you while managing and valida
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide) [![Dependency Status](https://david-dm.org/ghidoz/angular2-form-utils.svg)](https://david-dm.org/ghidoz/angular2-form-utils) [![devDependency Status](https://david-dm.org/ghidoz/angular2-form-utils/dev-status.svg)](https://david-dm.org/ghidoz/angular2-form-utils#info=devDependencies) [![npm version](https://badge.fury.io/js/angular2-form-utils.svg)](https://badge.fury.io/js/angular2-form-utils)
 
 ## Table of Contents
-- [Getting started](#getting-started)
-    - [Installation](#installation)
+- [Installation](#installation)
+- [Features](#features)
     - [Form errors list](#form-errors-list)
     - [Error Messages](#error-messages)
     - [Custom Validators](#custom-validators)
 - [Development](#development)
 - [License](#licence)
 
-## Getting started
 
-### Installation
+## Installation
 
 To install this library, run:
 ```bash
@@ -55,6 +54,7 @@ export class MyFormComponent{
   // ...
 }
 ```
+## Features
 
 ### Form Errors List
 
