@@ -8,6 +8,7 @@ Some useful components and services that will help you while managing and valida
 - [Getting started](#getting-started)
     - [Installation](#installation)
     - [Form errors list](#form-errors-list)
+    - [Error Messages](#error-messages)
     - [Custom Validators](#custom-validators)
 - [Development](#development)
 - [License](#licence)
@@ -78,6 +79,8 @@ Add the `<errors>`component inside your form, passing the variable:
 <errors [form]="form"></errors>
 ```
 
+### Error Messages
+
 If you want to customize the error messages or add new ones, use the `ErrorMessageService`:
 ```typescript
 import { ErrorMessageService } from 'angular2-form-utils';
@@ -87,6 +90,19 @@ constructor(errorMessageService: ErrorMessageService) {
         required: 'please, fill this!'
     });
 }
+```
+
+Some built-in Validators (as well as some Custom Validators) has params that you can use in your custom messages using `{{paramName}}`. 
+
+Here are the default messages:
+
+```typescript
+required: 'is required',
+minlength: 'must be at least {{requiredLength}} characters long',
+maxlength: 'must be no more than {{requiredLength}} characters long',
+email: 'must be valid',
+min: 'must be a number greater than or equal to {{requiredMin}}',
+max: 'must be a number less than or equal to {{requiredMax}}'
 ```
 
 Fields names in the errors list are based on input names or FormControl names and humanized (`first_name` becames `First Name`), but if you want to customize them, you can set a map object:
@@ -112,7 +128,7 @@ Some built in useful validators that you can apply to your forms:
 
 #### How to use
 
-Import and use them as classical Validators. Using the `FormBuilder`:
+Import and use them as built-in Validators. Using the `FormBuilder`:
 
 ```typescript
 import { CustomValidators } from 'angular2-form-utils';
