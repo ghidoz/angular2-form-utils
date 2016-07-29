@@ -67,7 +67,8 @@ When the user submits your form:
 > - **Password**: must be at least 8 characters long
 
 2) Error messages update or disappear as the user edits the fields.
-3) Your `ngSubmit`method will be called only if the form is valid.
+
+3) Your `ngSubmit` method will be called only if the form is valid.
 
 Moreover, the `novalidate` attribute is automatically added to your form.
 
@@ -81,7 +82,7 @@ Add the `validate` directive to your form:
 </form>
 ```
 
-Add the `<errors>`component inside your form:
+Add the `<errors>` component inside your form:
 
 ```html
 <errors></errors>
