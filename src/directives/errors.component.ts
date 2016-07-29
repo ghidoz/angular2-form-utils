@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Host } from '@angular/core';
 import { FormGroupDirective, FormGroup } from '@angular/forms';
 import { ErrorMessageService } from '../services/error-message.service';
+import { ValidateDirective } from './validate.directive';
 
 @Component({
   selector: 'errors',
@@ -16,12 +17,12 @@ export class ErrorsComponent implements OnInit {
   private formGroup: FormGroup;
   private errors: {field: string, message: string}[];
 
-  constructor(private errorMessageService: ErrorMessageService) { }
+  constructor(private errorMessageService: ErrorMessageService, @Host() private validate: ValidateDirective) { }
 
   ngOnInit() {
     this.formGroup = this.form.form;
     this.formGroup.valueChanges.subscribe(() => this.getErrors());
-    this.form.ngSubmit.subscribe(() => this.getErrors());
+    this.validate.showErrors.subscribe(() => this.getErrors());
   }
 
   getErrors() {
