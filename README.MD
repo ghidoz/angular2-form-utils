@@ -7,7 +7,7 @@ Some useful components and services that will help you while managing and valida
 ## Table of Contents
 - [Installation](#installation)
 - [Features](#features)
-    - [Form errors list](#form-errors-list)
+    - [Validate Directive and form errors list](#validate-directive-and-form-errors-list)
     - [Error Messages](#error-messages)
     - [Custom Validators](#custom-validators)
 - [TODO](#todo)
@@ -57,27 +57,34 @@ export class MyFormComponent{
 ```
 ## Features
 
-### Form Errors List
+### Validate Directive and Form Errors List
 
-Show a list of error messages under your form, like:
+When the user submits your form:
+
+1) If there are errors, a list of error messages will appear under your form, like:
 
 > - **Username**: is required
 > - **Password**: must be at least 8 characters long
 
+2) Error messages update or disappear as the user edits the fields.
+3) Your `ngSubmit`method will be called only if the form is valid.
+
+Moreover, the `novalidate` attribute is automatically added to your form.
+
 #### How to use
  
-Add a **template reference variable** to your form, binding it to `ngForm`:
+Add the `validate` directive to your form:
 
 ```html
-<form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+<form #form="ngForm" (ngSubmit)="onSubmit(form.value)" validate>
 ...
 </form>
 ```
 
-Add the `<errors>`component inside your form, passing the variable:
+Add the `<errors>`component inside your form:
 
 ```html
-<errors [form]="form"></errors>
+<errors></errors>
 ```
 
 ### Error Messages
