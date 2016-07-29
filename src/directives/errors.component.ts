@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Host } from '@angular/core';
-import { FormGroupDirective, FormGroup } from '@angular/forms';
+import { Component, OnInit, Input, Host, Optional } from '@angular/core';
+import { FormGroupDirective, FormGroup, NgForm, Form } from '@angular/forms';
 import { ErrorMessageService } from '../services/error-message.service';
 import { ValidateDirective } from './validate.directive';
 
@@ -13,11 +13,18 @@ import { ValidateDirective } from './validate.directive';
 })
 export class ErrorsComponent implements OnInit {
 
-  @Input() form: FormGroupDirective;
+  private form: FormGroupDirective | NgForm;
   private formGroup: FormGroup;
   private errors: {field: string, message: string}[];
 
-  constructor(private errorMessageService: ErrorMessageService, @Host() private validate: ValidateDirective) { }
+  constructor(
+    private errorMessageService: ErrorMessageService,
+    @Host() private validate: ValidateDirective,
+    @Optional() private formGroupDirective: FormGroupDirective,
+    @Optional() @Host() private ngForm: NgForm
+  ) {
+    this.form = this.formGroupDirective || this.ngForm;
+  }
 
   ngOnInit() {
     this.formGroup = this.form.form;
