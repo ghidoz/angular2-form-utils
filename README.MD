@@ -171,7 +171,7 @@ When the `ngSubmit`callback is fired, you can call your server and, if you get s
 Add the `validate` directive to your form, but also make sure to add a **template reference variable** bound with it, passing it to the `ngSubmit`callback.
 
 ```html
-<form #v="validate" (ngSubmit)="onSubmit(validate)" validate>
+<form #v="validate" (ngSubmit)="onSubmit(v)" validate>
 ...
 </form>
 ```
