@@ -1,5 +1,5 @@
 import { Component, OnInit, Host, Optional } from '@angular/core';
-import { FormGroupDirective, FormGroup, NgForm } from '@angular/forms';
+import { FormGroupDirective, FormGroup, NgForm, FormControl, AbstractControl } from '@angular/forms';
 import { ErrorMessageService } from '../services/error-message.service';
 import { ValidateDirective } from './validate.directive';
 
@@ -35,10 +35,18 @@ export class ErrorsComponent implements OnInit {
   private getErrors() {
     if (this.form.submitted) {
       this.errors = [];
-      for (let fieldName of Object.keys(this.formGroup.controls)){
-        if (this.formGroup.controls[fieldName].errors) {
-          this.addErrors(fieldName, this.formGroup.controls[fieldName].errors);
-        }
+      this.getErrorsFromControls(this.formGroup.controls);
+    }
+  }
+
+  private getErrorsFromControls(controls: { [key: string]: AbstractControl}) {
+    for (let fieldName of Object.keys(controls)){
+      let control = controls[fieldName];
+      if (control instanceof FormGroup) {
+        this.getErrorsFromControls(control.controls);
+      }
+      if (control.errors) {
+        this.addErrors(fieldName, controls[fieldName].errors);
       }
     }
   }
