@@ -11,6 +11,7 @@ Some useful components and services that will help you while managing and valida
     - [Form Errors List](#form-errors-list)
     - [Error Messages](#error-messages)
     - [Custom Validators](#custom-validators)
+    - [Server Side Errors](#server-side-errors)
 - [TODO](#todo)
 - [Development](#development)
 - [License](#licence)
@@ -60,7 +61,7 @@ export class MyFormComponent{
 
 ### Validate Directive
 
-Usually, when your form is submitted, it always calls your `ngSubmit` binded method and you have to manually check if the form is valid, before sending the info to the server. With this directive, instead, the method is called only if there are no errors.
+Usually, when your form is submitted, it always calls your `ngSubmit` bound method and you have to manually check if the form is valid, before sending the info to the server. With this directive, instead, the method is called only if there are no errors.
 
 Moreover, the `novalidate` attribute is automatically added to your form.
 
@@ -160,6 +161,49 @@ or directly in template-driven forms:
 <input type="email" name="email" ngModel validateEmail required />
 <input type="number" name="age" ngModel min="18" max="42" required />
 ```
+
+### Server side errors
+
+When the `ngSubmit`callback is fired, you can call your server and, if you get some errors, you can add them to the error list using the `addErrors` method.
+
+#### How to use
+
+Add the `validate` directive to your form, but also make sure to add a **template reference variable** bound with it, passing it to the `ngSubmit`callback.
+
+```html
+<form #v="validate" (ngSubmit)="onSubmit(validate)" validate>
+...
+</form>
+```
+
+Now you can add your custom error from the `onSubmit` method:
+
+```typescript
+onSubmit(validate) {
+  validate.addErrors('email', {
+    unique: true
+  });
+}
+```
+
+A more real example is when you get errors from a server call:
+
+```typescript
+onSubmit(validate) {
+  this.user.signup(validate.form.value).subscribe(
+    (response: any) => successCallback(response.data),
+    (response: any) => {
+      for (let error: any of response.errors) {
+        let errorObject: any = {};
+        errorObject[error.name] = true;
+        validate.addErrors(error.field, errorObject);
+      }
+    }
+  );
+}
+```
+
+As you can see, you can access to the form instance from `validate.form`.
 
 ## TODO
 - Add unit testing and E2E testing
