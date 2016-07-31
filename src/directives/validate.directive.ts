@@ -24,18 +24,26 @@ export class ValidateDirective implements OnInit {
         this.renderer.setElementAttribute(this.el.nativeElement, 'novalidate', 'novalidate');
         let eventEmitter: EventEmitter<any> = this.showErrors;
         this.form.onSubmit = function(){
-            this._submitted = true;
-            if (this.valid) {
-                ObservableWrapper.callEmit(this.ngSubmit, null);
-            } else {
-                eventEmitter.emit(this.valid);
+            try {
+                this._submitted = true;
+                if (this.valid) {
+                    ObservableWrapper.callEmit(this.ngSubmit, null);
+                } else {
+                    eventEmitter.emit(this.valid);
+                }
+            } catch (error) {
+                console.error(error.message, error.wrapperStack);
             }
             return false;
         };
     }
 
     addErrors(fieldName: string, errors: {[key: string]: any}) {
-        this.form.form.controls[fieldName].setErrors(errors);
-        this.showErrors.emit(false);
+        if (this.form.form.controls[fieldName]) {
+            this.form.form.controls[fieldName].setErrors(errors);
+            this.showErrors.emit(false);
+        } else {
+            throw `The field "${fieldName}" does not exists!`;
+        }
     }
 }
