@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Host, Optional } from '@angular/core';
-import { FormGroupDirective, FormGroup, NgForm, Form } from '@angular/forms';
+import { Component, OnInit, Host, Optional } from '@angular/core';
+import { FormGroupDirective, FormGroup, NgForm } from '@angular/forms';
 import { ErrorMessageService } from '../services/error-message.service';
 import { ValidateDirective } from './validate.directive';
 
@@ -51,5 +51,4 @@ export class ErrorsComponent implements OnInit {
       });
     }
   }
-
 }

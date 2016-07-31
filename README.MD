@@ -134,7 +134,7 @@ constructor(errorMessageService: ErrorMessageService) {
 
 ### Custom Validators
 
-Some built in useful validators that you can apply to your forms:
+Some useful validators that you can apply to your forms:
 
  - `CustomValidators.email`: check if it's a valid email
  - `CustomValidators.min`check if it's a number greater than `min`
