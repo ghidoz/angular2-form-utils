@@ -1,5 +1,5 @@
 import { isPresent } from '@angular/forms/src/facade/lang';
-import { Validators, AbstractControl } from '@angular/forms';
+import { Validators, AbstractControl, FormGroup } from '@angular/forms';
 
 export class CustomValidators {
 
@@ -32,6 +32,14 @@ export class CustomValidators {
             }
             let v: number = Number(control.value);
             return v > max ? {'max': {'requiredMax': max, 'actualMax': v}} : null;
+        };
+    }
+
+    static match(field: string, confirmField: string): Function {
+        return (group: FormGroup): { [key: string]: any } => {
+            if (group.controls[field] && group.controls[confirmField]) {
+                return (group.controls[field].value !== group.controls[confirmField].value) ? {'match': true} : null;
+            }
         };
     }
 
