@@ -136,9 +136,10 @@ constructor(errorMessageService: ErrorMessageService) {
 
 Some useful validators that you can apply to your forms:
 
- - `CustomValidators.email`: check if it's a valid email
- - `CustomValidators.min`check if it's a number greater than `min`
- - `CustomValidators.max` check if it's a number less than `max` 
+ - `CustomValidators.email`: checks if it's a valid email
+ - `CustomValidators.min`checks if it's a number greater than `min`
+ - `CustomValidators.max` checks if it's a number less than `max` 
+ - `CustomValidators.match` checks if a field match another field (applicable only to `formGroup`s)
 
 #### How to use
 
@@ -150,16 +151,33 @@ import { CustomValidators } from 'angular2-form-utils';
 constructor(fb: FormBuilder) {
     this.myForm = fb.group({
       email: ['', [Validators.required, CustomValidators.email]],
-      age: ['', [Validators.required, CustomValidators.min(18), CustomValidators.max(42)]]
+      age: ['', [Validators.required, CustomValidators.min(18), CustomValidators.max(42)]],
+      password_confirmation: fb.group({
+          password: ['', [Validators.required, Validators.minLength(8)]],
+          repeat_password:  ['']
+      }, {validator: CustomValidators.match('password', 'repeat_password')}),
     });
 }
 ```
 
-or directly in template-driven forms:
+```html
+<input type="email" formControlName="email" />
+<input type="number" formControlName="age" />
+<fieldset formGroupName="password_confirmation">
+    <input type="password" formControlName="password" />
+    <input type="password" formControlName="repeat_password" />
+</fieldset>
+```
+
+or directly in **template-driven forms**:
 
 ```html
 <input type="email" name="email" ngModel validateEmail required />
 <input type="number" name="age" ngModel min="18" max="42" required />
+<fieldset ngModelGroup="password_confirmation" match="password,repeat_password">
+    <input type="password" name="password" ngModel required minlength="8" />
+    <input type="password" name="repeat_password" ngModel />
+</fieldset>
 ```
 
 ### Server side errors
