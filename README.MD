@@ -7,7 +7,8 @@ Some useful components and services that will help you while managing and valida
 ## Table of Contents
 - [Installation](#installation)
 - [Features](#features)
-    - [Validate Directive and form errors list](#validate-directive-and-form-errors-list)
+    - [Validate Directive](#validate-directive)
+    - [Form Errors List](#form-errors-list)
     - [Error Messages](#error-messages)
     - [Custom Validators](#custom-validators)
 - [TODO](#todo)
@@ -57,24 +58,15 @@ export class MyFormComponent{
 ```
 ## Features
 
-### Validate Directive and Form Errors List
+### Validate Directive
 
-When the user submits your form:
-
-1) If there are errors, a list of error messages will appear under your form, like:
-
-> - **Username**: is required
-> - **Password**: must be at least 8 characters long
-
-2) Error messages update or disappear as the user edits the fields.
-
-3) Your `ngSubmit` method will be called only if the form is valid.
+Usually, when your form is submitted, it always calls your `ngSubmit` binded method and you have to manually check if the form is valid, before sending the info to the server. With this directive, instead, the method is called only if there are no errors.
 
 Moreover, the `novalidate` attribute is automatically added to your form.
 
 #### How to use
  
-Add the `validate` directive to your form:
+Just add the `validate` directive to your form:
 
 ```html
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" validate>
@@ -82,7 +74,19 @@ Add the `validate` directive to your form:
 </form>
 ```
 
-Add the `<errors>` component inside your form:
+### Form Errors List
+
+If there are errors, a list of error messages will appear under your form, like:
+
+> - **Username**: is required
+> - **Password**: must be at least 8 characters long
+
+Error messages update or disappear as the user edits the fields.
+
+#### How to use
+
+1. Add the the `validate` directive to the form ([see above](#validate-directive)).
+2. Add the `<errors>` component inside your form:
 
 ```html
 <errors></errors>
