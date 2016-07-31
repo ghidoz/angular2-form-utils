@@ -32,7 +32,7 @@ export class ErrorsComponent implements OnInit {
     this.validate.showErrors.subscribe(() => this.getErrors());
   }
 
-  getErrors() {
+  private getErrors() {
     if (this.form.submitted) {
       this.errors = [];
       for (let fieldName of Object.keys(this.formGroup.controls)){
@@ -43,7 +43,7 @@ export class ErrorsComponent implements OnInit {
     }
   }
 
-  addErrors(fieldName: string, errors: any) {
+  private addErrors(fieldName: string, errors: any) {
     for (let error of Object.keys(errors)) {
       this.errors.push({
         field: this.errorMessageService.getFieldName(fieldName),
