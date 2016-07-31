@@ -1,6 +1,6 @@
 {
   "name": "angular2-form-utils",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "scripts": {
     "build": "rm -rf dist && tsc",
     "lint": "tslint src/**/*.ts",
